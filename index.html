@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Mrs. Thakur ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ========== PASSWORD SCREEN ========== -->
+  <div id="password-screen" class="password-screen">
+    <div class="pw-bg-overlay"></div>
+    <div class="pw-particles" id="pw-particles"></div>
+    <div class="pw-card">
+      <div class="pw-heart-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+      <h1 class="pw-title">A Secret Garden</h1>
+      <p class="pw-subtitle">Made with love, just for you</p>
+      <div class="pw-input-wrap">
+        <input
+          type="password"
+          id="pw-input"
+          class="pw-input"
+          placeholder="Enter your name, love…"
+          autocomplete="off"
+        />
+        <button class="pw-btn" id="pw-btn" onclick="checkPassword()">
+          <i class="fas fa-unlock-alt"></i>
+          <span>Open</span>
+        </button>
+      </div>
+      <p class="pw-error" id="pw-error">Incorrect Password ❤️</p>
+      <div class="pw-hint">
+        <i class="fas fa-lock"></i> &nbsp; Only you know the key
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== LOADING SCREEN ========== -->
+  <div id="loading-screen" class="loading-screen hidden">
+    <div class="loading-bg"></div>
+    <div class="loading-content">
+      <div class="loading-hearts">
+        <div class="lh lh1"><i class="fas fa-heart"></i></div>
+        <div class="lh lh2"><i class="fas fa-heart"></i></div>
+        <div class="lh lh3"><i class="fas fa-heart"></i></div>
+        <div class="lh lh4"><i class="fas fa-heart"></i></div>
+        <div class="lh lh5"><i class="fas fa-heart"></i></div>
+      </div>
+      <div class="loading-main-heart">
+        <i class="fas fa-heart"></i>
+      </div>
+      <p class="loading-quote" id="loading-quote">"Every love story is beautiful, but ours is my favorite."</p>
+      <div class="loading-bar-wrap">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+      <p class="loading-pct" id="loading-pct">0%</p>
+    </div>
+  </div>
+
+  <!-- ========== MAIN SITE ========== -->
+  <div id="main-site" class="main-site hidden">
+
+    <!-- FLOATING MUSIC PLAYER -->
+    <div class="music-player" id="music-player">
+      <audio id="audio" src="assets/music/your-thoughts.mp3" preload="auto"></audio>
+      <div class="music-player-inner">
+        <div class="music-icon-wrap">
+          <i class="fas fa-music music-icon spinning" id="music-vinyl-icon"></i>
+        </div>
+        <div class="music-info">
+          <span class="music-title">Your Thoughts</span>
+          <span class="music-artist">Our Song ❤️</span>
+        </div>
+        <div class="music-controls">
+          <button class="mc-btn" id="mc-play" onclick="togglePlay()">
+            <i class="fas fa-pause" id="play-icon"></i>
+          </button>
+          <button class="mc-btn" id="mc-mute" onclick="toggleMute()">
+            <i class="fas fa-volume-up" id="mute-icon"></i>
+          </button>
+        </div>
+        <div class="music-progress-wrap">
+          <div class="music-progress-bar" id="music-progress-bar">
+            <div class="music-progress-fill" id="music-progress-fill"></div>
+          </div>
+          <div class="music-time">
+            <span id="music-current">0:00</span>
+            <span id="music-total">0:00</span>
+          </div>
+        </div>
+        <div class="music-volume-wrap">
+          <i class="fas fa-volume-down vol-icon"></i>
+          <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.01" value="0.7" />
+          <i class="fas fa-volume-up vol-icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" id="hero-bg">
+        <img src="assets/cover.jpg" alt="Our Love" class="hero-img" id="hero-img" onerror="this.style.display='none'; document.getElementById('hero-placeholder').style.display='flex';" />
+        <div class="hero-placeholder" id="hero-placeholder" style="display:none;">
+          <div class="hero-placeholder-inner">
+            <div class="ph-hearts">
+              <i class="fas fa-heart ph-h1"></i>
+              <i class="fas fa-heart ph-h2"></i>
+              <i class="fas fa-heart ph-h3"></i>
+            </div>
+          </div>
+        </div>
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <p class="hero-tagline">A gift made with all my heart</p>
+        <h1 class="hero-title">For Mrs. Thakur <span class="hero-heart">❤️</span></h1>
+        <p class="hero-sub">Because you deserve the whole universe,<br/>I start with this little world.</p>
+        <a href="#letter" class="hero-cta scroll-link">
+          <span>Read My Letter</span>
+          <i class="fas fa-arrow-down"></i>
+        </a>
+      </div>
+      <div class="hero-scroll-indicator">
+        <div class="scroll-dot"></div>
+      </div>
+      <div class="hero-petals" id="hero-petals"></div>
+    </section>
+
+    <!-- LOVE LETTER SECTION -->
+    <section class="section letter-section" id="letter">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">A Letter For You</span>
+          <h2 class="section-title">Dear Mrs. Thakur</h2>
+          <div class="section-divider"><i class="fas fa-heart"></i></div>
+        </div>
+
+        <!-- Envelope -->
+        <div class="envelope-wrap fade-in" id="envelope-wrap">
+          <div class="envelope" id="envelope" onclick="openLetter()">
+            <div class="env-flap" id="env-flap">
+              <div class="env-flap-inner"></div>
+            </div>
+            <div class="env-left-fold"></div>
+            <div class="env-right-fold"></div>
+            <div class="env-bottom-fold"></div>
+            <div class="env-body">
+              <div class="env-seal" id="env-seal">
+                <i class="fas fa-heart"></i>
+                <div class="env-seal-ring"></div>
+              </div>
+              <p class="env-hint" id="env-hint">
+                <i class="fas fa-hand-pointer"></i> Click to open
+              </p>
+            </div>
+            <div class="env-letter-peek" id="env-letter-peek"></div>
+            <div class="env-glow"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter Modal (full-screen) -->
+      <div class="letter-modal" id="letter-modal">
+        <div class="letter-modal-bg"></div>
+        <div class="letter-modal-glow"></div>
+        <div class="letter-petals-layer" id="letter-petals-layer"></div>
+        <div class="letter-modal-inner">
+          <button class="letter-close-btn" id="letter-close-btn" onclick="closeLetter()">
+            <i class="fas fa-times"></i>
+          </button>
+          <div class="letter-paper" id="letter-paper">
+            <div class="letter-paper-header">
+              <i class="fas fa-feather-alt"></i>
+            </div>
+            <div class="letter-typewriter-wrap">
+              <div class="letter-typed" id="letter-typed"></div>
+              <span class="letter-cursor" id="letter-cursor">|</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE SECTION -->
+    <section class="section timeline-section" id="timeline">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">Our Story</span>
+          <h2 class="section-title">Chapters of Us</h2>
+          <div class="section-divider"><i class="fas fa-heart"></i></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item fade-in-left">
+            <div class="tl-dot"><i class="fas fa-star"></i></div>
+            <div class="tl-card">
+              <span class="tl-date">The Beginning</span>
+              <h3 class="tl-title">The Day Everything Changed</h3>
+              <p class="tl-desc">The universe conspired to bring us together, and in that moment, my whole world shifted. I found you — or perhaps, I found myself.</p>
+              <div class="tl-icon-decor"><i class="fas fa-heart"></i></div>
+            </div>
+          </div>
+          <div class="timeline-item fade-in-right">
+            <div class="tl-dot"><i class="fas fa-comment-dots"></i></div>
+            <div class="tl-card">
+              <span class="tl-date">First Conversations</span>
+              <h3 class="tl-title">Words That Became Magic</h3>
+              <p class="tl-desc">Every message, every laugh, every late-night conversation became a thread weaving us closer. I started looking forward to mornings because of you.</p>
+              <div class="tl-icon-decor"><i class="fas fa-heart"></i></div>
+            </div>
+          </div>
+          <div class="timeline-item fade-in-left">
+            <div class="tl-dot"><i class="fas fa-sun"></i></div>
+            <div class="tl-card">
+              <span class="tl-date">Growing Together</span>
+              <h3 class="tl-title">Every Moment, A Memory</h3>
+              <p class="tl-desc">Days turned into memories and memories turned into a life. Every ordinary moment became extraordinary simply because you were in it.</p>
+              <div class="tl-icon-decor"><i class="fas fa-heart"></i></div>
+            </div>
+          </div>
+          <div class="timeline-item fade-in-right">
+            <div class="tl-dot"><i class="fas fa-ring"></i></div>
+            <div class="tl-card">
+              <span class="tl-date">Forever</span>
+              <h3 class="tl-title">Mrs. Thakur — Always</h3>
+              <p class="tl-desc">You became mine, and I became yours. A promise made not just with words but with every heartbeat, every breath, every tomorrow.</p>
+              <div class="tl-icon-decor"><i class="fas fa-heart"></i></div>
+            </div>
+          </div>
+          <div class="timeline-item fade-in-left">
+            <div class="tl-dot"><i class="fas fa-infinity"></i></div>
+            <div class="tl-card">
+              <span class="tl-date">Now & Always</span>
+              <h3 class="tl-title">Today and Every Day After</h3>
+              <p class="tl-desc">This is just one more chapter in our endless story. The best pages are still to come, written together, one beautiful day at a time.</p>
+              <div class="tl-icon-decor"><i class="fas fa-heart"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">Our Moments</span>
+          <h2 class="section-title">A Gallery of Us</h2>
+          <div class="section-divider"><i class="fas fa-heart"></i></div>
+          <p class="section-desc">Drop your photos into <code>assets/gallery/</code> — they appear here automatically via <code>manifest.json</code></p>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- Dynamically populated by script.js -->
+        </div>
+        <div class="gallery-empty" id="gallery-empty" style="display:none;">
+          <i class="fas fa-images"></i>
+          <p>Your photos will bloom here.<br/>Add images to <code>assets/gallery/</code><br/>and list them in <code>assets/gallery/manifest.json</code></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <div class="lb-backdrop"></div>
+      <button class="lb-close" id="lb-close"><i class="fas fa-times"></i></button>
+      <button class="lb-prev" id="lb-prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="lb-next" id="lb-next"><i class="fas fa-chevron-right"></i></button>
+      <div class="lb-content">
+        <div class="lb-img-wrap">
+          <img src="" alt="" class="lb-img" id="lb-img" />
+        </div>
+        <div class="lb-meta">
+          <div class="lb-caption" id="lb-caption"></div>
+          <div class="lb-counter" id="lb-counter"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEMORIES SECTION -->
+    <section class="section memories-section" id="memories">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">Sweet Nothings</span>
+          <h2 class="section-title">Things I Love About You</h2>
+          <div class="section-divider"><i class="fas fa-heart"></i></div>
+        </div>
+        <div class="memories-grid">
+          <div class="memory-card fade-in" data-delay="0">
+            <div class="mc-icon"><i class="fas fa-smile-beam"></i></div>
+            <h3>Your Smile</h3>
+            <p>The way your eyes crinkle when you laugh — it's the most beautiful thing I've ever seen. It's my favourite view in the entire world.</p>
+          </div>
+          <div class="memory-card fade-in" data-delay="100">
+            <div class="mc-icon"><i class="fas fa-heart"></i></div>
+            <h3>Your Kindness</h3>
+            <p>The way you care — quietly, deeply, genuinely. You make everyone around you feel seen and loved. It's one of your greatest gifts.</p>
+          </div>
+          <div class="memory-card fade-in" data-delay="200">
+            <div class="mc-icon"><i class="fas fa-star"></i></div>
+            <h3>Your Strength</h3>
+            <p>You face every storm with grace. The strength you carry quietly — it inspires me every single day to be better.</p>
+          </div>
+          <div class="memory-card fade-in" data-delay="300">
+            <div class="mc-icon"><i class="fas fa-moon"></i></div>
+            <h3>Our Late Nights</h3>
+            <p>When the world goes quiet and it's just us — those conversations, that closeness. Those are the moments I treasure most.</p>
+          </div>
+          <div class="memory-card fade-in" data-delay="400">
+            <div class="mc-icon"><i class="fas fa-music"></i></div>
+            <h3>The Songs We Share</h3>
+            <p>Every song has become ours. Every melody carries a memory. You've made music mean something entirely different to me.</p>
+          </div>
+          <div class="memory-card fade-in" data-delay="500">
+            <div class="mc-icon"><i class="fas fa-infinity"></i></div>
+            <h3>Forever With You</h3>
+            <p>Not just the big moments — but every quiet morning, every ordinary evening. Every single moment with you is where I want to be.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMISES SECTION -->
+    <section class="section promises-section" id="promises">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">From My Heart</span>
+          <h2 class="section-title">My Promises to You</h2>
+          <div class="section-divider"><i class="fas fa-heart"></i></div>
+        </div>
+        <div class="promises-list fade-in">
+          <div class="promise-item">
+            <div class="promise-num">01</div>
+            <div class="promise-content">
+              <h3>I promise to love you</h3>
+              <p>On the easy days and the hard ones. On the days we laugh and on the days we're tired. Every single day, without condition.</p>
+            </div>
+          </div>
+          <div class="promise-item">
+            <div class="promise-num">02</div>
+            <div class="promise-content">
+              <h3>I promise to choose you</h3>
+              <p>Every morning when I wake up, every evening when the day ends. You are always, always my choice.</p>
+            </div>
+          </div>
+          <div class="promise-item">
+            <div class="promise-num">03</div>
+            <div class="promise-content">
+              <h3>I promise to grow with you</h3>
+              <p>To change and evolve alongside you, to face every chapter — new, uncertain, beautiful — hand in hand.</p>
+            </div>
+          </div>
+          <div class="promise-item">
+            <div class="promise-num">04</div>
+            <div class="promise-content">
+              <h3>I promise to make you feel loved</h3>
+              <p>Not just to say it, but to show it — in the small gestures, the quiet moments, the everyday things that matter most.</p>
+            </div>
+          </div>
+          <div class="promise-item">
+            <div class="promise-num">05</div>
+            <div class="promise-content">
+              <h3>I promise to be your safe place</h3>
+              <p>Your home, your refuge, your constant. No matter what the world throws at us, you will always have me.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE CAROUSEL -->
+    <section class="section quote-section" id="quotes">
+      <div class="quote-carousel">
+        <div class="quote-slide active">
+          <p class="q-text">"In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."</p>
+          <span class="q-author">— Maya Angelou</span>
+        </div>
+        <div class="quote-slide">
+          <p class="q-text">"You are my today and all of my tomorrows."</p>
+          <span class="q-author">— Leo Christopher</span>
+        </div>
+        <div class="quote-slide">
+          <p class="q-text">"I love you not only for what you are, but for what I am when I am with you."</p>
+          <span class="q-author">— Roy Croft</span>
+        </div>
+        <div class="quote-slide">
+          <p class="q-text">"Whatever our souls are made of, his and mine are the same."</p>
+          <span class="q-author">— Emily Brontë</span>
+        </div>
+        <div class="quote-slide">
+          <p class="q-text">"I would rather spend one lifetime with you than face all the ages of this world alone."</p>
+          <span class="q-author">— Tolkien</span>
+        </div>
+      </div>
+      <div class="quote-dots" id="quote-dots"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-hearts">
+        <i class="fas fa-heart fh1"></i>
+        <i class="fas fa-heart fh2"></i>
+        <i class="fas fa-heart fh3"></i>
+      </div>
+      <p class="footer-title">For Mrs. Thakur ❤️</p>
+      <p class="footer-sub">Made with love. Every pixel, every word — just for you.</p>
+      <div class="footer-divider"></div>
+      <p class="footer-bottom">Forever yours. &infin;</p>
+    </footer>
+
+  </div><!-- /main-site -->
+
+  <script src="script.js"></script>
+</body>
+</html>
